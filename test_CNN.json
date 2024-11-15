@@ -1,0 +1,108 @@
+{
+    "edges": [
+        ["Conv2d_1", "MaxPool2d_1"],
+
+        ["MaxPool2d_1", "Conv2d_2"],
+        ["Conv2d_2", "BatchNorm2d_2"],
+        ["BatchNorm2d_2", "ReLU_2"],
+        ["ReLU_2", "Conv2d_3"],
+        ["Conv2d_3", "BatchNorm2d_3"],
+        ["BatchNorm2d_3", "ReLU_3"],
+
+        ["MaxPool2d_1", "Conv2d_4"],
+        ["Conv2d_4", "BatchNorm2d_4"],
+        ["BatchNorm2d_4", "ReLU_4"],
+
+        ["ReLU_3","add_1"],
+        ["ReLU_4","add_1"],
+        ["add_1","AvgPool2d_1"],
+        ["AvgPool2d_1", "Linear_1"]
+
+    ],
+    "start_node": "Conv2d_1",
+    "end_node": "Linear_1",
+    "nodes": {
+        "Conv2d_1":{
+            "type": "Conv2d",
+            "out_channels": 8,
+            "kernel_size": 3, 
+            "stride": 1,
+            "padding": 1
+            },
+
+        "MaxPool2d_1":{
+            "type": "MaxPool2d",
+            "kernel_size": 2, 
+            "stride": 1,
+            "padding": 1
+            },
+
+        "Conv2d_2":{
+            "type": "Conv2d",
+            "out_channels": 16,
+            "kernel_size": 3, 
+            "stride": 1,
+            "padding": 1
+            },
+
+        "BatchNorm2d_2":{
+            "type": "BatchNorm2d"
+            },
+        
+        "ReLU_2":{
+            "type": "activation",
+            "fun": "ReLU"
+            },
+
+        "Conv2d_3":{
+            "type": "Conv2d",
+            "out_channels": 32,
+            "kernel_size": 3, 
+            "stride": 1,
+            "padding": 1
+            },
+
+        "BatchNorm2d_3":{
+            "type": "BatchNorm2d"
+            },
+        
+        "ReLU_3":{
+            "type": "activation",
+            "fun": "ReLU"
+            },
+
+        "Conv2d_4":{
+            "type": "Conv2d",
+            "out_channels": 32,
+            "kernel_size": 3, 
+            "stride": 1,
+            "padding": 1
+            },
+
+        "BatchNorm2d_4":{
+            "type": "BatchNorm2d"
+            },
+        
+        "ReLU_4":{
+            "type": "activation",
+            "fun": "ReLU"
+            },
+
+        "add_1":{
+            "type": "add"
+            },
+
+        "AvgPool2d_1":{
+            "type": "AvgPool2d",
+            "kernel_size": 2,
+            "stride": 1,
+            "padding": 1
+            },
+            
+        "Linear_1":{
+            "type": "Linear",
+            "out_features": 10
+            }
+            
+    }
+}
